@@ -1,0 +1,4 @@
+srcs/requirements/mariadb/
+srcs/requirements/bonus/
+srcs/requirements/wordpress/
+srcs/requirements/.env
