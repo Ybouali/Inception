@@ -8,6 +8,8 @@ RUN curl -LO https://wordpress.org/latest.zip
 
 RUN unzip /tmp/latest.zip
 
+# COPY /tmp/latest.zip/wordpress/ /var/www/html
 WORKDIR /
 
-# COPY /tmp/latest.zip/wordpress /var/www/
+
+ENTRYPOINT [ "tail", "-f" ]
