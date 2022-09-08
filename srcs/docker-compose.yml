@@ -8,10 +8,11 @@ services:
     ports:
       - "443:443"
     volumes:
-      - ./requirements/wordpress:/var/www/html
+      - /Desktop/ybouali/data
   wordpress:
     build: requirements/wordpress
     container_name: wordpress
     ports:
       - "9000:9000"
-  
+    volumes:
+      - /Desktop/ybouali/data
