@@ -12,4 +12,6 @@ RUN mkdir -p /var/www/html
 
 RUN cp -r wordpress /var/www/html/
 
-ENTRYPOINT [ "/bin", "-f" ]
+COPY ./tools/* /tmp/
+
+# ENTRYPOINT [ "tail", "-f" ]

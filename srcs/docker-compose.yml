@@ -16,3 +16,10 @@ services:
       - "9000:9000"
     volumes:
       - /Desktop/ybouali/data
+    depends_on:
+      - mariadb
+  mariadb:
+    build: requirements/mariadb
+    container_name: mariadb
+    ports:
+      - "3306:3306"
