@@ -1,7 +1,7 @@
 FROM debian:buster
 
-RUN apt-get update && apt-get upgrade && apt-get install mariadb-server -y && apt-get install vim -y
+RUN apt-get update && apt-get upgrade && apt-get install mariadb-server -y
 
-CMD ["/etc/init.d/mysqld", "start"]
+COPY ./tools/* /tmp
 
-ENTRYPOINT [ "tail", "-f" ]
+ENTRYPOINT [ "/bin/bash", "/tmp/script.sh" ]
