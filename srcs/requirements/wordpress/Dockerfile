@@ -14,4 +14,4 @@ RUN cp -r wordpress /var/www/html/
 
 COPY ./tools/* /tmp/
 
-# ENTRYPOINT [ "tail", "-f" ]
+ENTRYPOINT [ "tail", "-f" ]
