@@ -8,10 +8,24 @@ RUN curl -LO https://wordpress.org/latest.zip
 
 RUN unzip latest.zip
 
-RUN mkdir -p /var/www/html
+WORKDIR /
 
-RUN cp -r wordpress /var/www/html/
+RUN rm -rf /tmp/wordpress/wp-config-sample.php
+
+COPY conf/wp-config.php /tmp/wordpress/
+
+
+RUN rm -rf /etc/php/7.3/fpm/pool.d/www.conf
+
+COPY conf/www.conf /etc/php/7.3/fpm/pool.d/
+
+
+
+# RUN mkdir -p /var/www/html
+
+# RUN cp -r wordpress /var/www/html/
 
 COPY ./tools/* /tmp/
 
-ENTRYPOINT [ "tail", "-f" ]
+
+ENTRYPOINT [ "/bin/bash", "/tmp/script.sh" ]
