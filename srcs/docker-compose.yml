@@ -1,31 +1,47 @@
 version: '3'
+
 services:
   nginx:
     build: requirements/nginx
     container_name: nginx
+    restart: unless-stopped
     env_file:
       - ./.env
     depends_on:
       - wordpress
     ports:
       - "443:443"
+    networks:
+      - frontend
     volumes:
-      - /Desktop/ybouali/data
+      - "~/Desktop/ybouali/data/website:/var/www/html"
   wordpress:
     build: requirements/wordpress
     container_name: wordpress
+    # restart: unless-stopped
     env_file:
       - ./.env
     ports:
       - "9000:9000"
+    networks:
+      - frontend
+      - backend
     volumes:
-      - /Desktop/ybouali/data
+      - "~/Desktop/ybouali/data/website:/var/www/html"
     depends_on:
       - mariadb
   mariadb:
     build: requirements/mariadb
     container_name: mariadb
+    restart: unless-stopped
     env_file:
       - ./.env
     ports:
       - "3306:3306"
+    networks:
+      - backend
+    volumes:
+      - ~/Desktop/ybouali/data/mariadb:/var/lib/mysql
+networks:
+  frontend:
+  backend:

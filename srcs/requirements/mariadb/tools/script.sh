@@ -1,13 +1,11 @@
 #!/bin/bash
 
-mysqld start
+service mysql start
 
-mysql -u root -e "CREATE DATABASE wordpress DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci"
+# mysql -u root -e "CREATE DATABASE wordpress DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci,FLUSH PRIVILEGES,GRANT ALL ON wordpress.* TO '{$MYSQL_USER}'@'%' IDENTIFIED BY '{$MYSQL_ROOT_PASSWORD}'"
 
-mysql -u root -e "GRANT ALL ON wordpress.* TO '{$MYSQL_USER}'@'%' IDENTIFIED BY '{$MYSQL_ROOT_PASSWORD}'"
+sleep 1
 
-mysql -u root -e "FLUSH PRIVILEGES"
-
-/etc/init.d/mysql stop
+service mysql stop
 
 mysqld
