@@ -4,11 +4,11 @@ if [ ! -d "/run/php" ]; then
     mkdir /run/php/;
 fi
 
-mkdir -p /var/www/wordpress
+mkdir -p /var/www/html/wordpress
 
-cp -a /tmp/wordpress/. /var/www/wordpress
+cp -a /tmp/wordpress/. /var/www/html/wordpress
 
-chown -R www-data:www-data /var/www/wordpress
+chown -R www-data:www-data /var/www/html/wordpress
 
 php-fpm7.3 -F -R
 
