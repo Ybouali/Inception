@@ -1,8 +1,8 @@
 #!/bin/bash
 
-mkdir -p /var/www/html/wordpress
+# mkdir -p /var/www/html/wordpress
 
-mv /tmp/wordpress/* /var/www/html/
+mv /tmp/wordpress /var/www/html/
 
 if [ ! -d "/run/php" ]; then
     mkdir /run/php/;

@@ -9,21 +9,17 @@ WORKDIR /tmp
 
 RUN curl -LO https://wordpress.org/latest.zip
 
-RUN unzip latest.zip
-
-RUN rm -rf latest.zip
-
+RUN unzip latest.zip; rm -rf latest.zip;
 
 RUN rm -rf /tmp/wordpress/wp-config-sample.php
 
-COPY conf/wp-config.php /tmp/wordpress/
-
+COPY ./conf/wp-config.php /tmp/wordpress/
 
 RUN rm -rf /etc/php/7.3/fpm/pool.d/www.conf
 
-COPY conf/www.conf /etc/php/7.3/fpm/pool.d/
+COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/
 
-COPY ./tools/* /tmp/
+COPY ./tools/script.sh /tmp/
 
 WORKDIR /
 

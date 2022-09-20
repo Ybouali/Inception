@@ -8,9 +8,13 @@ COPY tools/* .
 
 WORKDIR /
 
-RUN rm /etc/nginx/sites-available/default
+RUN mkdir -p /run/nginx
 
-COPY conf/default /etc/nginx/sites-available/
+COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
+
+# RUN rm /etc/nginx/sites-available/default
+
+# COPY conf/default /etc/nginx/sites-available/
 
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]

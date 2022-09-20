@@ -14,7 +14,7 @@ services:
     networks:
       - frontend
     volumes:
-      - ~/Desktop/ybouali/data/website:/var/www/html/wordpress
+      - '../../ybouali/data/website:/var/www/html'
   wordpress:
     build: requirements/wordpress
     container_name: wordpress
@@ -27,23 +27,21 @@ services:
       - frontend
       - backend
     volumes:
-      - ~/Desktop/ybouali/data/website:/var/www/html/wordpress
+      - '../../ybouali/data/website:/var/www/html'
     depends_on:
       - mariadb
   mariadb:
     build: requirements/mariadb
     container_name: mariadb
-    # restart: unless-stopped
+    restart: unless-stopped
     env_file:
       - ./.env
     ports:
       - "3306:3306"
+    # volumes:
+    #   - '../../ybouali/data/database:/var/lib/mysql'
     networks:
       - backend
-    # volumes:
-    #   - ~/Desktop/ybouali/data/mariadb:/var/lib/mysql/
 networks:
   frontend:
-    name: frontend
   backend:
-    name: backend
