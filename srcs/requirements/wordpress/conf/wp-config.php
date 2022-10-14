@@ -20,24 +20,22 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', getenv('DATABASE_NAME') );
+define( 'DB_NAME', getenv('DATABASE_NAME'));
 
 /** Database username */
-define( 'DB_USER', getenv('MYSQL_USER') );
+define( 'DB_USER', getenv('MYSQL_USER'));
 
 /** Database password */
-define( 'DB_PASSWORD', getenv('MYSQL_ROOT_PASSWORD') );
+define( 'DB_PASSWORD', getenv('MYSQL_ROOT_PASSWORD'));
 
 /** Database hostname */
-define( 'DB_HOST', getenv('DB_HOST') );
+define( 'DB_HOST', getenv('DB_HOST'));
 
-/** Database charset to use in creating database tables. */
+// /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8mb4' );
 
-/** The database collate type. Don't change this if in doubt. */
+// /** The database collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
-
-define('FS_METHOD', 'direct');
 
 /**#@+
  * Authentication unique keys and salts.
@@ -50,6 +48,7 @@ define('FS_METHOD', 'direct');
  *
  * @since 2.6.0
  */
+
 define('AUTH_KEY',         '8$fzaXjc.DgbTKXToHRy~u1X|WPc{|M3#t`$_c/1+@=mVqb7n<k|Ck4SYa@u|VDQ');
 define('SECURE_AUTH_KEY',  '{X0N.[y?E|WO^).n!6KPFmkH5eh^E|WeVHo#EmnAe?3ojl]/]+y?NzN>^;_`&`S*');
 define('LOGGED_IN_KEY',    'Va=+kzxK+:Q/|: fRunU>2p)*j@SqK$H5*{kQ7^S|N7&( ke.=E+Vd~Q(YyW/.d7');

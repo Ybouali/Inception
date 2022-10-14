@@ -1,5 +1,4 @@
-version: '3'
-
+version: '3.8'
 services:
   nginx:
     build: requirements/nginx
@@ -14,7 +13,7 @@ services:
     networks:
       - frontend
     volumes:
-      - '../../ybouali/data/website:/var/www/html'
+      - ~/Desktop/data/wp:/wordpress/
   wordpress:
     build: requirements/wordpress
     container_name: wordpress
@@ -27,7 +26,7 @@ services:
       - frontend
       - backend
     volumes:
-      - '../../ybouali/data/website:/var/www/html'
+      - ~/Desktop/data/wp:/wordpress/
     depends_on:
       - mariadb
   mariadb:
@@ -38,10 +37,12 @@ services:
       - ./.env
     ports:
       - "3306:3306"
-    # volumes:
-    #   - '../../ybouali/data/database:/var/lib/mysql'
+    volumes:
+      - ~/Desktop/data/db:/var/lib/mysql/
     networks:
       - backend
 networks:
   frontend:
+    name: front_end
   backend:
+    name: back_end

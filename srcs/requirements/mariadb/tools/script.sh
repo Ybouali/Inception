@@ -6,10 +6,13 @@ if [ -z "$(mysql -u root -e "SHOW DATABASES LIKE '${DATABASE_NAME}'" | grep ${DA
 
     
     echo "Creating ${DATABASE_NAME} database ..."
-    # mysql -u root -e "CREATE DATABASE IF NOT EXISTS wp_db; CREATE USER IF NOT EXISTS 'wp-user'@'%' IDENTIFIED BY 'wp-pass'; GRANT ALL PRIVILEGES ON *.* TO 'wp-user'@'%'; FLUSH PRIVILEGES;"
-    mysql -u root -e "CREATE DATABASE IF NOT EXISTS wp_db;"
-    mysql -u root -e "CREATE USER IF NOT EXISTS 'wp-user'@'%' IDENTIFIED BY 'wp-pass';"
-    mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'wp-user'@'%';"
+
+    mysql -u root -e "CREATE DATABASE IF NOT EXISTS ${DATABASE_NAME};"
+
+    mysql -u root -e "CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
+
+    mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_USER}'@'%';"
+
     mysql -u root -e "FLUSH PRIVILEGES;"
 
 fi

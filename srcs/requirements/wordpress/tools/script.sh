@@ -1,18 +1,24 @@
 #!/bin/bash
 
-# mkdir -p /var/www/html/wordpress
+rm /tmp/wordpress/wp-config-sample.php
 
-mv /tmp/wordpress /var/www/html/
+cp /tmp/wp-config.php /tmp/wordpress/
+
+mv -f /tmp/wordpress/* /wordpress/
+
+rm /etc/php/7.3/fpm/pool.d/www.conf
+
+cp ./tmp/www.conf /etc/php/7.3/fpm/pool.d/
 
 if [ ! -d "/run/php" ]; then
     mkdir /run/php/;
 fi
 
-chmod -R 777 /var/www/html/wordpress
+# chmod -R 777 /wordpress
 
-chown -R www-data:www-data /var/www/html/wordpress
+chown -R www-data:www-data /wordpress
 
-chown -R www-data:www-data /var/www/html/wordpress
+echo "Wordpress is here :)"
 
 php-fpm7.3 -F -R
 
