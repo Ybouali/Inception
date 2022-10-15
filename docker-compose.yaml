@@ -1,0 +1,51 @@
+version: '3.9'
+services:
+  nginx:
+    build: ./srcs/requirements/nginx
+    container_name: nginx
+    restart: unless-stopped
+    env_file:
+      - ./srcs/.env
+    depends_on:
+      - wordpress
+    ports:
+      - "443:443"
+    networks:
+      - inception
+    volumes:
+      - type: bind
+        source: ~/Desktop/data/wp
+        target: /wordpress/
+  wordpress:
+    build: ./srcs/requirements/wordpress
+    container_name: wordpress
+    restart: unless-stopped
+    env_file:
+      - ./srcs/.env
+    ports:
+      - "9000:9000"
+    networks:
+      - inception
+    volumes:
+      - type: bind
+        source: ~/Desktop/data/wp
+        target: /wordpress/
+    depends_on:
+      - mariadb
+  mariadb:
+    build: ./srcs/requirements/mariadb
+    container_name: mariadb
+    restart: unless-stopped
+    env_file:
+      - ./srcs/.env
+    ports:
+      - "3306:3306"
+    volumes:
+      - type: bind
+        source: ~/Desktop/data/db
+        target: /var/lib/mysql/
+    networks:
+      - inception
+networks:
+  inception:
+    name: inception

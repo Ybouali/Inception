@@ -14,8 +14,6 @@ if [ ! -d "/run/php" ]; then
     mkdir /run/php/;
 fi
 
-# chmod -R 777 /wordpress
-
 chown -R www-data:www-data /wordpress
 
 echo "Wordpress is here :)"
