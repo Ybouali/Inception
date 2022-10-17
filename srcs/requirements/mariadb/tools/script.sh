@@ -1,6 +1,13 @@
 #!/bin/bash
 
-cp -r /tmp/data/* /var/lib/mysql/
+if [ -z "$(ls /var/lib/mysql | grep mysql)" ]; then
+
+    echo "COPY FILES && FOLDERS FOR MYSQL ...";
+
+    rm -rf /var/lib/mysql/*;
+    
+    mv /tmp/data/* /var/lib/mysql/;
+fi;
 
 service mysql start
 
@@ -19,8 +26,6 @@ if [ -z "$(mysql -u root -e "SHOW DATABASES LIKE '${DATABASE_NAME}'" | grep ${DA
     mysql -u root -e "FLUSH PRIVILEGES;"
 
 fi
-    
-sleep 1
 
 service mysql stop
 

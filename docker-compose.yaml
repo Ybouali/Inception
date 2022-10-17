@@ -1,4 +1,4 @@
-version: '3.9'
+version: '3'
 services:
   nginx:
     build: ./srcs/requirements/nginx
@@ -13,9 +13,7 @@ services:
     networks:
       - inception
     volumes:
-      - type: bind
-        source: ~/Desktop/data/wp
-        target: /wordpress/
+      - wp-wordpress:/wordpress/
   wordpress:
     build: ./srcs/requirements/wordpress
     container_name: wordpress
@@ -27,9 +25,7 @@ services:
     networks:
       - inception
     volumes:
-      - type: bind
-        source: ~/Desktop/data/wp
-        target: /wordpress/
+      - wp-wordpress:/wordpress/
     depends_on:
       - mariadb
   mariadb:
@@ -41,11 +37,22 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - type: bind
-        source: ~/Desktop/data/db
-        target: /var/lib/mysql/
+      - db-mariadb:/var/lib/mysql/
     networks:
       - inception
+volumes:
+  db-mariadb:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o:  'bind'
+      device: '~/Desktop/data/db'
+  wp-wordpress:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o:  'bind'
+      device: '~/Desktop/data/wp'
 networks:
   inception:
     name: inception

@@ -5,6 +5,9 @@
 
 # TO DELETE ALL CASHES "docker system -a -f"
 
+# EXPORT DATA FROM DOCKER CONTAINER IN THE EXAMPLE I WELL EXPORT WORDPRESS DATABASE FROM MARIADB CONTAINER
+# docker exec mariadb /usr/bin/mysqldump -u root --password=root wordpress > wordpress.sql
+
 all: 
 	docker-compose build
 	docker-compose up

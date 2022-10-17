@@ -1,6 +1,6 @@
 FROM debian:buster
 
-RUN apt-get update && apt-get install php-fpm php-common php-mbstring php-xmlrpc php-gd php-xml php-mysql php-cli php-zip php-curl -y && apt-get install unzip && apt-get install curl
+RUN apt-get update && apt-get install unzip && apt-get install curl -y && apt-get install php-fpm php-mysql -y
 
 WORKDIR /tmp/
 
