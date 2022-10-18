@@ -12,6 +12,8 @@ services:
       - "443:443"
     networks:
       - inception
+    # volumes:
+    #   - ~/Desktop/data/wp:/wordpress/
     volumes:
       - wp-wordpress:/wordpress/
   wordpress:
@@ -24,6 +26,8 @@ services:
       - "9000:9000"
     networks:
       - inception
+    # volumes:
+    #   - ~/Desktop/data/wp:/wordpress/
     volumes:
       - wp-wordpress:/wordpress/
     depends_on:
@@ -36,6 +40,8 @@ services:
       - ./srcs/.env
     ports:
       - "3306:3306"
+    # volumes:
+    #   - ~/Desktop/data/db:/var/lib/mysql/
     volumes:
       - db-mariadb:/var/lib/mysql/
     networks:
@@ -44,15 +50,15 @@ volumes:
   db-mariadb:
     driver: local
     driver_opts:
-      type: 'none'
-      o:  'bind'
-      device: '~/Desktop/data/db'
+      type: none
+      device: ~/Desktop/data/db
+      o:  bind
   wp-wordpress:
     driver: local
     driver_opts:
-      type: 'none'
-      o:  'bind'
-      device: '~/Desktop/data/wp'
+      type: none
+      device: ~/Desktop/data/wp
+      o:  bind
 networks:
   inception:
     name: inception

@@ -19,9 +19,13 @@ if [ -z "$(mysql -u root -e "SHOW DATABASES LIKE '${DATABASE_NAME}'" | grep ${DA
 
     mysql -u root -e "CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
 
+    mysql -u root -e "CREATE USER IF NOT EXISTS '${MYSQL_USER_TEST}'@'%' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD_TEST}';"
+
     mysql -u root wordpress < /tmp/wordpress.sql
 
     mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_USER}'@'%';"
+
+    mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_USER_TEST}'@'%';"
 
     mysql -u root -e "FLUSH PRIVILEGES;"
 
