@@ -8,6 +8,6 @@ COPY ./tools/* /tmp
 
 RUN mkdir /tmp/data
 
-RUN  cp -r /var/lib/mysql/* /tmp/data/
+RUN mv -f /var/lib/mysql/* /tmp/data/
 
 ENTRYPOINT [ "/bin/bash", "/tmp/script.sh" ]

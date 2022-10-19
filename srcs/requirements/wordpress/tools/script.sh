@@ -5,11 +5,13 @@ if [ -z "$(ls /wordpress/ | grep wp-admin)" ]; then
 
     echo "COPY FILES && FOLDERS FOR WORDPRESS ...";
 
-    rm /tmp/wordpress/wp-config-sample.php;
+    rm /tmp/wordpress/wp-config-sample.php
 
-    cp /tmp/wp-config.php /tmp/wordpress/;
+    cp /tmp/wp-config.php /tmp/wordpress/
 
-    mv -f /tmp/wordpress/* /wordpress/;
+    mv -f /tmp/wordpress/* /wordpress/
+    
+    echo "Wordpress is here :)"
 fi
 
 rm /etc/php/7.3/fpm/pool.d/www.conf
@@ -21,8 +23,6 @@ if [ ! -d "/run/php" ]; then
 fi
 
 chown -R www-data:www-data /wordpress
-
-echo "Wordpress is here :)"
 
 php-fpm7.3 -F -R
 

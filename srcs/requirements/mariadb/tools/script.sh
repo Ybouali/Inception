@@ -1,10 +1,10 @@
 #!/bin/bash
 
+rm -rf /var/lib/mysql/*;
+
 if [ -z "$(ls /var/lib/mysql | grep mysql)" ]; then
 
     echo "COPY FILES && FOLDERS FOR MYSQL ...";
-
-    rm -rf /var/lib/mysql/*;
     
     mv /tmp/data/* /var/lib/mysql/;
 fi;

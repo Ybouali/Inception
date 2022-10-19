@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'
 services:
   nginx:
     build: ./srcs/requirements/nginx
@@ -12,8 +12,6 @@ services:
       - "443:443"
     networks:
       - inception
-    # volumes:
-    #   - ~/Desktop/data/wp:/wordpress/
     volumes:
       - wp-wordpress:/wordpress/
   wordpress:
@@ -26,8 +24,6 @@ services:
       - "9000:9000"
     networks:
       - inception
-    # volumes:
-    #   - ~/Desktop/data/wp:/wordpress/
     volumes:
       - wp-wordpress:/wordpress/
     depends_on:
@@ -40,8 +36,6 @@ services:
       - ./srcs/.env
     ports:
       - "3306:3306"
-    # volumes:
-    #   - ~/Desktop/data/db:/var/lib/mysql/
     volumes:
       - db-mariadb:/var/lib/mysql/
     networks:
