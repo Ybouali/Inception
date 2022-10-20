@@ -1,14 +1,5 @@
 #!/bin/bash
 
-rm -rf /var/lib/mysql/*;
-
-if [ -z "$(ls /var/lib/mysql | grep mysql)" ]; then
-
-    echo "COPY FILES && FOLDERS FOR MYSQL ...";
-    
-    mv /tmp/data/* /var/lib/mysql/;
-fi;
-
 service mysql start
 
 if [ -z "$(mysql -u root -e "SHOW DATABASES LIKE '${DATABASE_NAME}'" | grep ${DATABASE_NAME})" ]; then

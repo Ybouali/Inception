@@ -1,18 +1,10 @@
-# TO DELETE ALL IMEGES "docker rmi $(docker images -a -q)"
-# TO ADD A .env file to the container --env-file ../../../srcs/.env
-# 
-# TO DELETE ALL VOLUMES "docker volume rm $(docker volume ls -q)"
-
-# TO DELETE ALL CASHES "docker system -a -f"
-
-# EXPORT DATA FROM DOCKER CONTAINER IN THE EXAMPLE I WELL EXPORT WORDPRESS DATABASE FROM MARIADB CONTAINER
-# docker exec mariadb /usr/bin/mysqldump -u root --password=root wordpress > wordpress.sql
-
-all: 
-	docker-compose build
-	docker-compose up
+all:
+	# echo "127.0.0.1       ybouali.42.fr" >> /private/etc/hosts
+	docker-compose up --build -d
 
 clean:
 	docker-compose down
-	docker rmi $(docker images -a -q)
+
+fclean: clean
 	docker system prune -a -f
+	docker volume rm inception_db-mariadb inception_wp-wordpress

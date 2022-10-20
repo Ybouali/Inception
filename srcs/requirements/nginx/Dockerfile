@@ -2,11 +2,9 @@ FROM debian:buster
 
 RUN apt-get update && apt-get install nginx -y 
 
-WORKDIR /etc/nginx/ssl
+RUN mkdir -p /etc/nginx/ssl
 
-COPY tools/* .
-
-WORKDIR /
+COPY tools/* /etc/nginx/ssl/
 
 RUN mkdir -p /run/nginx
 

@@ -1,18 +1,6 @@
 #!/bin/bash
 
-
-if [ -z "$(ls /wordpress/ | grep wp-admin)" ]; then
-
-    echo "COPY FILES && FOLDERS FOR WORDPRESS ...";
-
-    rm /tmp/wordpress/wp-config-sample.php
-
-    cp /tmp/wp-config.php /tmp/wordpress/
-
-    mv -f /tmp/wordpress/* /wordpress/
-    
-    echo "Wordpress is here :)"
-fi
+cp /tmp/wp-config.php /wordpress/
 
 rm /etc/php/7.3/fpm/pool.d/www.conf
 
