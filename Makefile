@@ -1,10 +1,9 @@
 all:
-	# echo "127.0.0.1       ybouali.42.fr" >> /private/etc/hosts
-	docker-compose up --build -d
+	docker-compose -f ./srcs/docker-compose.yaml up --build -d
 
 clean:
-	docker-compose down
+	docker-compose -f ./srcs/docker-compose.yaml down
 
 fclean: clean
 	docker system prune -a -f
-	docker volume rm inception_db-mariadb inception_wp-wordpress
+	docker volume rm srcs_wp-wordpress srcs_db-mariadb
