@@ -49,14 +49,6 @@ define( 'DB_COLLATE', '' );
  * @since 2.6.0
  */
 
-define('AUTH_KEY',         '8$fzaXjc.DgbTKXToHRy~u1X|WPc{|M3#t`$_c/1+@=mVqb7n<k|Ck4SYa@u|VDQ');
-define('SECURE_AUTH_KEY',  '{X0N.[y?E|WO^).n!6KPFmkH5eh^E|WeVHo#EmnAe?3ojl]/]+y?NzN>^;_`&`S*');
-define('LOGGED_IN_KEY',    'Va=+kzxK+:Q/|: fRunU>2p)*j@SqK$H5*{kQ7^S|N7&( ke.=E+Vd~Q(YyW/.d7');
-define('NONCE_KEY',        'i|+UZ)~.S^?;B4 q)3/0U4,4zKCRlg5mG`$]|ks^ Gf!T-]MmKl:-qm.kWL&C+`~');
-define('AUTH_SALT',        '8dLu2d_PbyUZ1|aNO.q{=uulrqv@J;2{O_IB+[-V~qN4{yRYy^ML.US$A 28O@Xs');
-define('SECURE_AUTH_SALT', 'G2Ar+Db^TqQKlxv(V{AQZa~^uP`#A9w?1&yRb}>L5#_{Z`]v+9v^m+3H<`a)TuS%');
-define('LOGGED_IN_SALT',   '81c|^,2x9Rm?T-o-^_= bc79>Nl?^&D<29C/)S6^D~L&m`iiKS:F=UrgG3i>%+N-');
-define('NONCE_SALT',       'szr2Y&<0*;im!-fQ4k$%D;5W/+Hi_F85>p}&h_p-r&L[acXHFYlI||+Q;y#+[[z%');
 
 /**#@-*/
 
