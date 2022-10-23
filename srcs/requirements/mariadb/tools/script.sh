@@ -16,6 +16,8 @@ if [ -z "$(mysql -u root -e "SHOW DATABASES LIKE '${DATABASE_NAME}'" | grep ${DA
 
     mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_USER_TEST}'@'%';"
 
+    mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
+
     mysql -u root -e "FLUSH PRIVILEGES;"
 
 fi
