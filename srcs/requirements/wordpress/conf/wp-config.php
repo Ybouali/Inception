@@ -18,6 +18,12 @@
  * @package WordPress
  */
 
+ // redis sitting
+ define('WP_CACHE', true);
+ 
+ define('WP_CACHE_KEY_SALT', getenv('DOMAIN_NAME'));
+ 
+ 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define( 'DB_NAME', getenv('DATABASE_NAME'));

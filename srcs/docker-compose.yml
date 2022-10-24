@@ -28,6 +28,7 @@ services:
       - wp-wordpress:/wordpress/
     depends_on:
       - mariadb
+      - redis
   mariadb:
     build: ./requirements/mariadb
     container_name: mariadb
@@ -40,6 +41,24 @@ services:
       - db-mariadb:/var/lib/mysql/
     networks:
       - inception
+  redis:
+    build: ./requirements/bonus/redis
+    container_name: redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    networks:
+      - inception
+  adminer:
+    build: ./requirements/bonus/adminer
+    container_name: adminer
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    networks:
+      - inception
+    depends_on:
+      - mariadb
 volumes:
   db-mariadb:
     driver: local
