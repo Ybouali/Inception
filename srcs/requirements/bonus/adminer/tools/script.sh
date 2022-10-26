@@ -1,13 +1,16 @@
 #!/bin/bash
 
-a2query -m php7.3
+ln -sf /usr/share/adminer/latest.php /usr/share/adminer/adminer.php
 
-ln -sf /adminer /usr/share/adminer/adminer/
+echo "Alias /adminer.php /usr/share/adminer/adminer.php" | sudo tee /etc/apache2/conf-available/adminer.conf
 
-a2enconf adminer
+a2enconf adminer.conf
 
-service apache2 reload
+service apache2 restart
+# a2enconf adminer
 
-# apachectl start
+# service apache2 reload
+
+apachectl stop
 
 apachectl -D FOREGROUND
