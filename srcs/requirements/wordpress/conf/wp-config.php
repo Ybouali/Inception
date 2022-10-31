@@ -19,9 +19,18 @@
  */
 
  // redis sitting
- define('WP_CACHE', true);
+ define('WP_REDIS_HOST', redis);
+ 
+ define('WP_REDIS_PORT', 6379);
+ 
+ define('WP_REDIS_TIMEOUT', 1);
+ 
+ define('WP_REDIS_READ_TIMEOUT', 1);
+ 
+ define('WP_REDIS_DATABASE', 0);
  
  define('WP_CACHE_KEY_SALT', getenv('DOMAIN_NAME'));
+
  
  
 // ** Database settings - You can get this info from your web host ** //

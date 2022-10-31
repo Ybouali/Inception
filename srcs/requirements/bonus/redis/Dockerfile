@@ -1,7 +1,9 @@
 FROM debian:buster
 
-RUN apt-get update && apt-get install -y redis-server php-redis
+RUN apt-get update && apt-get install -y redis-server
 
 COPY ./conf/redis.conf /etc/redis/redis.conf
 
-ENTRYPOINT [ "redis-server" ]
+RUN chmod 777 /etc/redis/redis.conf
+
+ENTRYPOINT [ "redis-server", "--protected-mode", "no" ]
