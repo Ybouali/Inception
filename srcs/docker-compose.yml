@@ -69,6 +69,18 @@ services:
       - "3000:3000"
     networks:
       - inception
+  ftp:
+    build: ./requirements/bonus/ftp
+    container_name: ftp
+    restart: unless-stopped
+    ports:
+      - "21:21"
+    networks:
+      - inception
+    volumes:
+      - wp-wordpress:/home/ftp/
+    depends_on:
+      - wordpress
 volumes:
   db-mariadb:
     driver: local
