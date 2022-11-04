@@ -1,13 +1,11 @@
 #!/bin/bash
 
-chown nobody:nogroup /home/ftp
+mkdir -p /var/run/vsftpd/empty
 
-chmod a-w /home/ftp
+useradd ${USER_FTP}
 
-mkdir -p /home/ftp/files
+usermod -p ${USER_FTP_PASSWORD} ${USER_FTP}
 
-chmod a-w /home/ftp/files
+echo ${USER_FTP} >> /etc/vsftpd.userlist
 
-service vsftpd start
-
-vsftpd
+vsftpd /etc/vsftpd.conf

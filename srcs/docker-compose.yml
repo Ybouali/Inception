@@ -75,8 +75,11 @@ services:
     restart: unless-stopped
     ports:
       - "21:21"
+      - "20:20"
     networks:
       - inception
+    env_file:
+      - ./.env
     volumes:
       - wp-wordpress:/home/ftp/
     depends_on:
