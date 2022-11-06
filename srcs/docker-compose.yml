@@ -28,6 +28,7 @@ services:
       - inception
     volumes:
       - wp-wordpress:/wordpress/
+      - porta:/portainer/
     depends_on:
       - mariadb
       - redis
@@ -76,14 +77,25 @@ services:
     ports:
       - "21:21"
       - "20:20"
+      - "4400-4500:4400-4500"
     networks:
       - inception
     env_file:
       - ./.env
     volumes:
-      - wp-wordpress:/home/ftp/
+      - wp-wordpress:/home/ybouali/ftp/
     depends_on:
       - wordpress
+  portainer:
+    build: ./requirements/bonus/portainer
+    container_name: portainer
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    networks:
+      - inception
+    volumes:
+      - porta:/portainer/public/
 volumes:
   db-mariadb:
     driver: local
@@ -96,6 +108,12 @@ volumes:
     driver_opts:
       type: none
       device: /home/ybouali/data/wp
+      o:  bind
+  porta:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/ybouali/data/porta
       o:  bind
 networks:
   inception:

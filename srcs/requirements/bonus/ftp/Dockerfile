@@ -2,10 +2,6 @@ FROM debian:buster
 
 RUN apt update && apt -y install vsftpd
 
-RUN mkdir -p /home/ftp
-
-RUN chmod -R 755 /home/ftp
-
 RUN rm -rf /etc/vsftpd.conf
 
 COPY ./conf/vsftpd.conf /etc/vsftpd.conf
