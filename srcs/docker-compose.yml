@@ -28,7 +28,6 @@ services:
       - inception
     volumes:
       - wp-wordpress:/wordpress/
-      - porta:/portainer/
     depends_on:
       - mariadb
       - redis
@@ -91,11 +90,11 @@ services:
     container_name: portainer
     restart: unless-stopped
     ports:
-      - "8000:8000"
+      - "9443:9443"
     networks:
       - inception
     volumes:
-      - porta:/portainer/public/
+      - portainer_data:/var/run/
 volumes:
   db-mariadb:
     driver: local
@@ -109,11 +108,11 @@ volumes:
       type: none
       device: /home/ybouali/data/wp
       o:  bind
-  porta:
+  portainer_data:
     driver: local
     driver_opts:
       type: none
-      device: /home/ybouali/data/porta
+      device: /var/run/
       o:  bind
 networks:
   inception:

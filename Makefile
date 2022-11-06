@@ -6,4 +6,4 @@ clean:
 
 fclean: clean
 	docker system prune -a -f
-	docker volume rm srcs_wp-wordpress srcs_db-mariadb srcs_porta
+	docker volume rm srcs_wp-wordpress srcs_db-mariadb srcs_portainer_data
