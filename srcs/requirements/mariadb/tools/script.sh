@@ -2,28 +2,32 @@
 
 service mysql start
 
-mysql -u root -e "CREATE DATABASE IF NOT EXISTS ${DATABASE_NAME};"
 
-mysql -u root -e "CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
+
+# if [ -z "$(mysql -u root -e "SHOW DATABASES LIKE '${DATABASE_NAME}'" | grep ${DATABASE_NAME})" ]; then
+
+mysql -u root << stop
+    
+CREATE DATABASE IF NOT EXISTS ${DATABASE_NAME};
+
+CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';
+
+stop
+
+sleep 1
 
 mysql ${DATABASE_NAME} < /tmp/wordpress.sql
 
-mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_USER}'@'localhost'"
+sleep 1
 
-# mysql -u root -e "UPDATE USER set mysql.user.plugin='auth_socket' where User='${MYSQL_USER}'"
+mysql -u root << stop
 
-mysql -u root -e "FLUSH PRIVILEGES;"
+GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_USER}'@'%';
 
-sleep 5
+FLUSH PRIVILEGES;
 
-mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; FLUSH PRIVILEGES;"
+ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'; FLUSH PRIVILEGES;
 
-sleep 5
+exit
 
-mysqld
-
-
-# service mysql stop
-
-
-# service mysql stop
+stop
