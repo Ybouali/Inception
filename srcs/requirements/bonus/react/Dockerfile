@@ -1,15 +1,14 @@
 FROM debian:buster
 
-RUN apt-get update && apt-get -y install curl
+RUN apt-get update && apt-get -y install curl \
+                                    git 
+
+RUN git clone https://github.com/Ybouali/portfolio.git
 
 RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash
 
 RUN apt-get update && apt-get -y install nodejs
 
-RUN mkdir -p /portfolio
-
-COPY ./tools/portfolio /portfolio
-
-COPY ./tools/script/script.sh /tmp/
+COPY ./tools/script.sh /tmp/
 
 ENTRYPOINT [ "/bin/bash", "/tmp/script.sh" ]

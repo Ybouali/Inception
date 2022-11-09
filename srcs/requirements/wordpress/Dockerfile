@@ -6,9 +6,9 @@ RUN apt-get update && apt-get -y install \
                         php-fpm=2:7.3+69 \
                         php-mysql=2:7.3+69
 
-RUN curl -LO https://wordpress.org/latest.zip
+RUN curl -LO https://wordpress.org/wordpress-6.0.2.zip
 
-RUN unzip latest.zip
+RUN unzip wordpress-6.0.2.zip
 
 COPY ./conf/* /tmp/
 
