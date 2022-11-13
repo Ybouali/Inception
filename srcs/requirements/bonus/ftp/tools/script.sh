@@ -1,13 +1,16 @@
 #!/bin/bash
 
-mkdir -p /var/run/vsftpd/empty
+if [ -z "$( cat /etc/passwd | grep ${USER_FTP})" ]; then
 
-useradd -m ${USER_FTP} && echo "${USER_FTP}:${USER_FTP_PASSWORD}" | chpasswd
+    mkdir -p /var/run/vsftpd/empty
 
-mkdir -p /home/${USER_FTP}/ftp
+    useradd -m ${USER_FTP} && echo "${USER_FTP}:${USER_FTP_PASSWORD}" | chpasswd
 
-chmod 777 /home/${USER_FTP}/ftp
+    mkdir -p /home/${USER_FTP}/ftp
 
-echo ${USER_FTP} >> /etc/vsftpd.userlist
+    chmod 777 /home/${USER_FTP}/ftp
+
+    echo ${USER_FTP} >> /etc/vsftpd.userlist
+fi
 
 vsftpd /etc/vsftpd.conf
