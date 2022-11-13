@@ -10,4 +10,4 @@ COPY ./tools/* /tmp/
 
 RUN /bin/bash /tmp/script.sh
 
-CMD ["mysqld"]
+ENTRYPOINT ["mysqld"]
