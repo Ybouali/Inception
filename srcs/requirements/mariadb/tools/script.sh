@@ -2,8 +2,6 @@
 
 service mysql start
 
-
-
 if [ -z "$(mysql -u root -e "SHOW DATABASES LIKE '${DATABASE_NAME}'" | grep ${DATABASE_NAME})" ]; then
 
 mysql -u root << stop
