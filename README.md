@@ -6,7 +6,7 @@ Grade 125 %
 
 clone
 ```
-git clone git@github.com:Ybouali/Inception.git && cd Inception
+git clone https://github.com/Ybouali/Inception.git && cd Inception
 ```
 
 ## to run the project 
